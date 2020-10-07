@@ -5,21 +5,27 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>iPhone 11 Pro</title>
+    <title>Monopoly</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
     <link href="styles.css" rel="stylesheet">
 
     <script>
         //Functia de schimbare a culorii ce primeste ca parametru o anumita culoare (in cazul nostru: green, gold, silver, grey)
         //In folderul assets gasim fotografiile produsului a caror denumire respecta formatul product_main_<color>.webp
-        function changeColor(color) {
+        /*function changeColor(color) {
             var imageElement = document.getElementById('product-image');
             imageElement.src = "assets/product_main_" + color + ".webp";
             var titleElement = document.getElementById('product-color-in-title');
             titleElement.innerText = capitalize(color);
-        }
+        }*/
+
+        function changePicture(type) {
+            var imageElement = document.getElementById('product-image');
+            imageElement.src = "assets/monopoly_" + type + ".webp";
+            var titleElement = document.getElementById('product-type-in-title');
+            titleElement.innerText = capitalize(type);
 
         //Capitalizarea unui string (transformarea primei litere in majuscula)
         function capitalize(string) {
@@ -29,14 +35,15 @@
         //Functia de actualizare a pretului
         //Cautam dupa elementul cu id-ul 'pricetag' si setam continutul acestuia in functie de parametrul primit
         function updatePrice(version){
-            updateVersionInTitle(version);
+            updateVersionInTitle(version);changePicture(version);
             var priceTagElement = document.getElementById("pricetag");
-            if(version == 64)
-                priceTagElement.innerText = "4799 RON";
-            else if(version == 256)
-                priceTagElement.innerText = "5199 RON";
-            else if(version == 512)
-                priceTagElement.innerText = "5399 RON";
+            if(version == 'Classic')
+                priceTagElement.innerText = "100 RON";
+                
+            else if(version == 'Card')
+                priceTagElement.innerText = "150 RON";
+            else if(version == 'Deal')
+                priceTagElement.innerText = "35 RON";
         }
 
         //Idem ca la actualizarea pretului
@@ -51,67 +58,39 @@
     <div class="container center">
         <div class="product-main">
             <div class="product-image">
-                <img src="assets/product_main_green.webp" id="product-image" />
+                <img src="assets/monopoly_classic.webp" id="product-image" />
             </div>
             <div class="product-details">
                 <div class="product-title">
-                    <h3>iPhone 11 Pro Midnight
-                        <span id="product-color-in-title">
-                            Green
+                    <h3>Monopoly
+                        <span id="product-type-in-title">
+                            Classic
                         </span> 
-                        <span id="title-version">64</span>
-                        GB</h3>
+                       
                 </div>
 
                 <div class="product-main-info">
                     <div class="bottom-border">
                         <p>
-                            Expanded field of view. iPhone 11 Pro lets you zoom from the Telephoto all the way out to
-                            the
-                            new Ultra Wide camera, for an impressive 4x optical zoom range.
+                            Monopoly is the classic fast-dealing property trading board game. 
                         </p>
                     </div>
-                    <div class="product-color">
-                        <span>Color</span>
+                    
 
-                        <div class="color-choose">
-                            <div>
-                                <input data-image="green" type="radio" id="green" name="color"
-                                    onchange="changeColor('green')" checked>
-                                <label for="green"><span></span></label>
-                            </div>
-                            <div>
-                                <input data-image="gold" type="radio" id="gold" name="color"
-                                    onchange="changeColor('gold')">
-                                <label for="gold"><span></span></label>
-                            </div>
-                            <div>
-                                <input data-image="silver" type="radio" id="silver" name="color"
-                                    onchange="changeColor('silver')">
-                                <label for="silver"><span></span></label>
-                            </div>
-                            <div>
-                                <input data-image="grey" type="radio" id="grey" name="color"
-                                    onchange="changeColor('grey')">
-                                <label for="grey"><span></span></label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="product-memsize bottom-border">
+                    <div class="product-type bottom-border">
 
                         <span>Device configuration</span>
 
-                        <div class="memsize-choose">
-                            <button onclick="updatePrice(64)">64 GB</button>
-                            <button onclick="updatePrice(256)">256 GB</button>
-                            <button onclick="updatePrice(512)">512 GB</button>
+                        <div class="type-choose">
+                            <button onclick="updatePrice('Classic')">Classic</button>
+                            <button onclick="updatePrice('Card')">Card</button>
+                            <button onclick="updatePrice('Deal')">Deal</button>
+                    
                         </div>
                     </div>
 
                     <div class="product-price">
-                        <span id="pricetag">4799 RON</span>
+                        <span id="pricetag">100 RON</span>
                         <a href="#" class="cart-btn">Add to cart</a>
                       </div>
                 </div>
@@ -128,20 +107,20 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Phone type</td>
-                    <td>Smartphone</td>
+                    <td>Game type</td>
+                    <td>Cards/Boarg game</td>
                 </tr>
                 <tr>
-                    <td>Operating system</td>
-                    <td>iOS</td>
+                    <td>Recommended age</td>
+                    <td>8+</td>
                 </tr>
                 <tr>
-                    <td>Cores</td>
-                    <td>6</td>
+                    <td>Number of players</td>
+                    <td>2-6</td>
                 </tr>
                  <tr>
-                    <td>CPU</td>
-                    <td>Apple A13 Bionic</td>
+                    <td>Time</td>
+                    <td>15 minutes - 3 hours</td>
                 </tr>
             </tbody>
         </table>
